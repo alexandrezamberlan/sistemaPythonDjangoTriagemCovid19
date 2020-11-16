@@ -108,7 +108,7 @@ class AboutView(TemplateView):
 
 {% if user.is_authenticated %}
       <center>
-            <h2>Sistema de Gestão de Atas</h2>
+            <h2>Sistema de Triagem Covid 19</h2>
             <h3>Laboratório de Práticas</h3>
 	</center>
 {% endif %}
