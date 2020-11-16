@@ -1,4 +1,4 @@
-# sistema Python Django para Triagem Covid19
+# Sistema Python Django para Triagem Covid19
 Sistema Web para triagem de atendimento de pacientes com possível Covid19
 
 ## Preparando o ambiente para desenvolvimento
