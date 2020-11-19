@@ -1,0 +1,3 @@
+Parte 1: https://youtu.be/S1y4Riuj_cc - Sistema no git e máquina local
+Parte 2: https://youtu.be/z-3KXyVaUJ4 - Projeto Python-Django e app core
+Parte 3: https://youtu.be/f3CJBlFjXlc - Revisão da estrutura de diretórios e modelo MVT
