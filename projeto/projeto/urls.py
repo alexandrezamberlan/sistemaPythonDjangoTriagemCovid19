@@ -9,6 +9,7 @@ urlpatterns = [
     url(r'', include('core.urls')),
     url(r'usuario/', include('usuario.urls')),
     url(r'unidade/', include('unidade.urls')),
+    url(r'triagem/', include('triagem.urls')),
    
     url(r'^accounts/', include('django.contrib.auth.urls')),
 ]
