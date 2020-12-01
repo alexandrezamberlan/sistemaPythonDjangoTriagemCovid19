@@ -19,7 +19,7 @@ class TriagemListView(LoginRequiredMixin,  ListView):
     
 class TriagemMinhasUnidadesListView(LoginRequiredMixin,  ListView):
     model = Triagem
-    template_name = 'triagem/triagem_minhas_unidades_list.html'
+    template_name = 'triagem/unidades_list.html'
 
 
 class TriagemCreateView(LoginRequiredMixin, CreateView):
