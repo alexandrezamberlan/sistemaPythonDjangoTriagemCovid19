@@ -16,6 +16,10 @@ from .models import Triagem
 
 class TriagemListView(LoginRequiredMixin,  ListView):
     model = Triagem
+    
+class TriagemMinhasUnidadesListView(LoginRequiredMixin,  ListView):
+    model = Triagem
+    template_name = 'triagem/triagem_minhas_unidades_list.html'
 
 
 class TriagemCreateView(LoginRequiredMixin, CreateView):
