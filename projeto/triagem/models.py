@@ -71,7 +71,7 @@ class Triagem(models.Model):
     
     @property
     def idade(self):
-        return datetime.now() 
+        return  datetime.now().year - self.data_nascimento.year
     
     @property
     def resultado_numerico_triagem(self):
@@ -99,6 +99,7 @@ class Triagem(models.Model):
         
         return soma    
     
+    @property
     def resultado_literal_triagem(self):
         if self.resultado_numerico_triagem <= 9:
             return 'Risco Baixo'

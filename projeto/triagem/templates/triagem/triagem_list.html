@@ -8,7 +8,8 @@
 {% block content %}
 	<div class="panel panel-default">
 	  <div class="panel-body">
-	    <a href="{% url 'triagem_create' %}" class="btn btn-md btn-primary">{% bootstrap_icon 'floppy-disk' %} Registrar uma triagem</a>
+		<a href="{% url 'triagem_create' %}" class="btn btn-md btn-primary">{% bootstrap_icon 'floppy-disk' %} Registrar uma triagem</a>
+		<a href="{% url 'triagem_create' %}" class="btn btn-md btn-primary">{% bootstrap_icon 'floppy-disk' %} Registrar uma triagem</a>
 	  </div>
 	</div>
 	<table class="table table-hover">
@@ -19,6 +20,7 @@
 			<th>Paciente</th>
 			<th>Idade</th>
 			<th>IMC</th>
+			<th>Situação</th>
 			<th>Resultado</th>
   			<th class="text-center">Editar</th>
   			<th class="text-center">Excluir</th>
@@ -32,8 +34,9 @@
 					<td>{{ triagem.hora }}</td>
 					<td>{{ triagem.paciente }}</td>
 					<td>{{ triagem.idade }}</td>
-					<td>{{ triagem.imc }}</td>
-					<td>{{ triagem.resultado_literal_triagem }}</td>					
+					<td>{{ triagem.imc|floatformat:2  }}</td>
+					<td>{{ triagem.resultado_literal_triagem }}</td>
+					<td>{{ triagem.resultado_numerico_triagem }}</td>					
 					<td class="text-center">
 						{% bootstrap_button content='' href=triagem.get_absolute_url button_type='link' icon='edit' button_class='btn btn-primary' size='sm' %}
 					</td>
