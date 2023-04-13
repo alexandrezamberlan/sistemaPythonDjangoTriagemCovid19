@@ -25,6 +25,14 @@ class TecnicoAtivoManager(UserManager):
     def get_queryset(self):
         return super().get_queryset().filter(tipo='TÉCNICO', is_active=True)
 
+class MedicoAtivoManager(UserManager):
+    def get_queryset(self):
+        return super().get_queryset().filter(tipo='MÉDICO', is_active=True)        
+
+
+class TecnicoEnfermeiroAtivoManager(UserManager):
+   def get_queryset(self):
+        return super().get_queryset().filter(Q(tipo='ENFERMEIRO') | Q(tipo='TÉCNICO'), is_active=True)
 
 class Usuario(AbstractBaseUser):
     #1 campo da tupla fica no banco de dados
@@ -32,6 +40,7 @@ class Usuario(AbstractBaseUser):
     TIPOS_USUARIOS = (
         ('ADMINISTRADOR', 'Administrador'),
         ('ENFERMEIRO', 'Enfermeiro' ),
+        ('MÉDICO', 'Médico' ),
         ('TÉCNICO', 'Técnico' ),
     )
 
@@ -48,6 +57,8 @@ class Usuario(AbstractBaseUser):
     administradores = AdministradorAtivoManager()
     enfermeiros = EnfermeiroAtivoManager()
     tecnicos = TecnicoAtivoManager()
+    medicos = MedicoAtivoManager()
+    tecnicos_enfermeiros = TecnicoEnfermeiroAtivoManager()
 
     class Meta:
         ordering            =   ['nome']

@@ -11,6 +11,7 @@ urlpatterns = [
     url(r'unidade/', include('unidade.urls')),
     url(r'triagem/', include('triagem.urls')),
     url(r'medicamento/', include('medicamento.urls')),
+    url(r'consulta/', include('consulta.urls')),
    
     url(r'^accounts/', include('django.contrib.auth.urls')),
 ]

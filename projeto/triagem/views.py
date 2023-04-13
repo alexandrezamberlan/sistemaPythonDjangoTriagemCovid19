@@ -11,6 +11,7 @@ from django.urls import reverse
 
 from utils.decorators import LoginRequiredMixin,  StaffRequiredMixin
 
+from .forms import TriagemFormCreate, TriagemFormUpdate
 from .models import Triagem
 
 
@@ -24,10 +25,7 @@ class TriagemMinhasUnidadesListView(LoginRequiredMixin,  ListView):
 
 class TriagemCreateView(LoginRequiredMixin, CreateView):
     model = Triagem
-    fields = ['responsavel', 'unidade', 'paciente', 'data_nascimento', 'altura', 'peso',
-              'tem_febre', 'tem_dor_cabeca', 'tem_secrecao_espirros', 'tem_irritacao_garganta',
-              'tem_tosse', 'tem_dificuldade_respiratoria', 'tem_dores_corpo', 'tem_diarreia',
-              'viajou', 'contatou']
+    form_class = TriagemFormCreate
     success_url = 'triagem_list'
     
     def get_success_url(self):
@@ -37,7 +35,8 @@ class TriagemCreateView(LoginRequiredMixin, CreateView):
 
 class TriagemUpdateView(LoginRequiredMixin, StaffRequiredMixin, UpdateView):
     model = Triagem
-    fields = ['responsavel', 'unidade', 'data_nascimento', 'altura', 'peso']
+    form_class = TriagemFormUpdate
+    
     success_url = 'triagem_list'
     
     def get_success_url(self):
