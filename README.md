@@ -1,3 +1,6 @@
+# Sala Meet para aulas virtuais UFN
+https://meet.google.com/pyt-wsyk-dan
+
 # Sistema Python Django para Triagem Covid19
 Sistema Web para triagem de atendimento de pacientes com possível Covid19
 
