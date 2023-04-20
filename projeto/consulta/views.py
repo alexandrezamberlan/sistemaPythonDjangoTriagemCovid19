@@ -12,6 +12,7 @@ from django.urls import reverse
 from utils.decorators import LoginRequiredMixin,  StaffRequiredMixin
 
 from .models import Consulta
+from .forms import ConsultaForm
 
 
 class ConsultaListView(LoginRequiredMixin,  ListView):
@@ -19,7 +20,8 @@ class ConsultaListView(LoginRequiredMixin,  ListView):
     
 class ConsultaCreateView(LoginRequiredMixin, CreateView):
     model = Consulta
-    fields = ['medico','unidade', 'paciente', 'prescricao', 'medicamentos']
+    # fields = ['medico','unidade', 'paciente', 'prescricao', 'medicamentos']
+    form_class = ConsultaForm
     success_url = 'consulta_list'
     
     def get_success_url(self):
@@ -29,7 +31,8 @@ class ConsultaCreateView(LoginRequiredMixin, CreateView):
 
 class ConsultaUpdateView(LoginRequiredMixin, StaffRequiredMixin, UpdateView):
     model = Consulta
-    fields = ['medico','unidade', 'paciente', 'prescricao', 'medicamentos']
+    # fields = ['medico','unidade', 'paciente', 'prescricao', 'medicamentos']
+    form_class = ConsultaForm
     success_url = 'consulta_list'
     
     def get_success_url(self):

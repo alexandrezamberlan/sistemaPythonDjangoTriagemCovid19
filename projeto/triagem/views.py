@@ -9,7 +9,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 from django.urls import reverse
 
-from utils.decorators import LoginRequiredMixin,  StaffRequiredMixin
+from utils.decorators import LoginRequiredMixin,  StaffRequiredMixin, EnfermeiroRequiredMixin
 
 from .forms import TriagemFormCreate, TriagemFormUpdate
 from .models import Triagem
@@ -23,7 +23,7 @@ class TriagemMinhasUnidadesListView(LoginRequiredMixin,  ListView):
     template_name = 'triagem/unidades_list.html'
 
 
-class TriagemCreateView(LoginRequiredMixin, CreateView):
+class TriagemCreateView(LoginRequiredMixin, EnfermeiroRequiredMixin, CreateView):
     model = Triagem
     form_class = TriagemFormCreate
     success_url = 'triagem_list'
@@ -33,7 +33,7 @@ class TriagemCreateView(LoginRequiredMixin, CreateView):
         return reverse(self.success_url)
 
 
-class TriagemUpdateView(LoginRequiredMixin, StaffRequiredMixin, UpdateView):
+class TriagemUpdateView(LoginRequiredMixin, EnfermeiroRequiredMixin, UpdateView):
     model = Triagem
     form_class = TriagemFormUpdate
     
@@ -44,7 +44,7 @@ class TriagemUpdateView(LoginRequiredMixin, StaffRequiredMixin, UpdateView):
         return reverse(self.success_url)
 
 
-class TriagemDeleteView(LoginRequiredMixin, StaffRequiredMixin, DeleteView):
+class TriagemDeleteView(LoginRequiredMixin, EnfermeiroRequiredMixin, DeleteView):
     model = Triagem
     success_url = 'triagem_list'
 

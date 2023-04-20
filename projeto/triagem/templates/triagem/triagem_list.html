@@ -22,6 +22,7 @@
 			<th>IMC</th>
 			<th>Situação</th>
 			<th>Resultado</th>
+			<th>Responsável triagem</th>
   			<th class="text-center">Editar</th>
   			<th class="text-center">Excluir</th>
   		</thead>
@@ -37,6 +38,7 @@
 					<td>{{ triagem.imc|floatformat:2  }}</td>
 					<td>{{ triagem.resultado_literal_triagem }}</td>
 					<td>{{ triagem.resultado_numerico_triagem }}</td>					
+					<td>{{ triagem.responsavel.get_primeiro_nome }}</td>					
 					<td class="text-center">
 						{% bootstrap_button content='' href=triagem.get_absolute_url button_type='link' icon='edit' button_class='btn btn-primary' size='sm' %}
 					</td>

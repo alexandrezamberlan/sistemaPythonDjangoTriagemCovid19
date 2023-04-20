@@ -93,6 +93,11 @@ class Usuario(AbstractBaseUser):
         return self.id
 
     @property
+    def get_primeiro_nome(self):
+        lista = self.nome.split(" ")
+        return lista[0]
+
+    @property
     def is_staff(self):
         if self.tipo == 'ADMINISTRADOR':
             return True

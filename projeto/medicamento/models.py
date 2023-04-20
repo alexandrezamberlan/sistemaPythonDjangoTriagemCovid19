@@ -35,11 +35,12 @@ class Medicamento(models.Model):
     is_active = models.BooleanField(_('Ativo'), default=True, help_text='Se ativo, o curso pode ser usado no sistema')
     slug = models.SlugField('Hash',max_length= 200,null=True,blank=True)
 
+    objects = models.Manager()
     medicamentos_ativos = MedicamentoAtivoManager()
 
     
     class Meta:
-        ordering            =   ['tarja', 'nome_real']
+        ordering            =   ['-is_active','tarja', 'nome_real']
         verbose_name        =   'medicamento'
         verbose_name_plural =   'medicamentos'
 

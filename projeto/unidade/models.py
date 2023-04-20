@@ -17,6 +17,8 @@ class Unidade(models.Model):
     is_active = models.BooleanField(_('Ativo'), default=True, help_text='Se ativo, o curso pode ser usado no sistema')
     slug = models.SlugField('Hash',max_length= 200,null=True,blank=True)
 
+    objects = models.Manager()
+
     
     class Meta:
         ordering            =   [u'nome']

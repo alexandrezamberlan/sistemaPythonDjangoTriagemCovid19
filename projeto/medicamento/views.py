@@ -9,7 +9,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 from django.urls import reverse
 
-from utils.decorators import LoginRequiredMixin, StaffRequiredMixin
+from utils.decorators import LoginRequiredMixin, StaffRequiredMixin, EnfermeiroRequiredMixin
 
 from .models import Medicamento
 
@@ -18,7 +18,7 @@ class MedicamentoListView(LoginRequiredMixin, ListView):
     model = Medicamento
  
 
-class MedicamentoCreateView(LoginRequiredMixin, StaffRequiredMixin, CreateView):
+class MedicamentoCreateView(LoginRequiredMixin, EnfermeiroRequiredMixin, CreateView):
     model = Medicamento
     fields = ['nome_real', 'nome_fantasia', 'tarja', 'tipo', 'quantidade', 'is_active']
     success_url = 'medicamento_list'
@@ -28,7 +28,7 @@ class MedicamentoCreateView(LoginRequiredMixin, StaffRequiredMixin, CreateView):
         return reverse(self.success_url)
 
 
-class MedicamentoUpdateView(LoginRequiredMixin, StaffRequiredMixin, UpdateView):
+class MedicamentoUpdateView(LoginRequiredMixin, EnfermeiroRequiredMixin, UpdateView):
     model = Medicamento
     fields = ['nome_real', 'nome_fantasia', 'tarja', 'tipo', 'quantidade', 'is_active']
     success_url = 'medicamento_list'
