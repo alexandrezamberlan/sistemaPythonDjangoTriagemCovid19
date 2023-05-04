@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'unidade',
     'triagem',
     'medicamento',
-    'consulta'
+    'consulta',
+    'paciente'
 ]
 
 MIDDLEWARE = [
