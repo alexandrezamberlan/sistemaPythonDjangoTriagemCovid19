@@ -28,6 +28,13 @@
         </li>
 
         <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{% bootstrap_icon 'user' %} Pacientes <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="{% url 'paciente_list' %}">Todos</a></li>
+          </ul>
+        </li>
+
+        <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{% bootstrap_icon 'list-alt' %} Triagens <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><a href="{% url 'triagem_list' %}">Todas</a></li>

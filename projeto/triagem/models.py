@@ -17,7 +17,9 @@ class Triagem(models.Model):
     #dados do paciente e da consulta
     data = models.DateField(_('Data da triagem '), max_length=10, help_text='Use dd/mm/aaaa')
     hora = models.TimeField(_('Hora da triagem '), max_length=10, help_text='Use hh:mm')
-    paciente = models.CharField(_('Informe o nome completo do paciente *'), max_length=100, help_text= '* indica campos obrigatórios')
+    
+    paciente2 = models.ForeignKey('paciente.Paciente', verbose_name= 'Paciente *', null=True, blank=False, on_delete=models.PROTECT, related_name='paciente2')
+    
     data_nascimento = models.DateField(_('Data de nascimento *'), max_length=10, help_text='Use dd/mm/aaaa')
     altura = models.DecimalField(_('Altura em metros *'), max_digits=3, decimal_places=2, validators=[MinValueValidator(0.0), MaxValueValidator(2.5)])
     peso = models.DecimalField(_('Peso em kg *'), max_digits=5, decimal_places=2, validators=[MinValueValidator(0.0), MaxValueValidator(400.0)])
@@ -39,17 +41,15 @@ class Triagem(models.Model):
     objects = models.Manager()
     
     class Meta:
-        ordering            =   ['-data', '-hora', 'paciente']
+        ordering            =   ['-data', '-hora', 'paciente2__nome']
         verbose_name        =   ('triagem')
         verbose_name_plural =   ('triagenss')
-        unique_together     =   [['data','hora','paciente']]
+        unique_together     =   [['data','hora','paciente2']]
 
     def __str__(self):
-        return "Paciente: %s. Resultado: %s." % (self.paciente, self.resultado_literal_triagem)
+        return "Paciente: %s. Resultado: %s." % (self.paciente2, self.resultado_literal_triagem)
 
     def save(self, *args, **kwargs):
-        self.paciente = self.paciente.upper()
-        
         self.data = datetime.now()
         self.hora = datetime.now()
         
