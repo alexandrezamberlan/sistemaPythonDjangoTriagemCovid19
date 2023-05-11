@@ -13,7 +13,7 @@ class ConsultaForm(forms.ModelForm):
 
     class Meta:
         model = Consulta
-        fields = ['medico', 'unidade', 'paciente', 'prescricao', 'medicamentos']
+        fields = ['medico', 'unidade', 'paciente_triagem', 'prescricao', 'medicamentos']
     
 
 

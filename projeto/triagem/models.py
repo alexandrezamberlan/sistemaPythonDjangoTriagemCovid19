@@ -20,7 +20,6 @@ class Triagem(models.Model):
     
     paciente2 = models.ForeignKey('paciente.Paciente', verbose_name= 'Paciente *', null=True, blank=False, on_delete=models.PROTECT, related_name='paciente2')
     
-    data_nascimento = models.DateField(_('Data de nascimento *'), max_length=10, help_text='Use dd/mm/aaaa')
     altura = models.DecimalField(_('Altura em metros *'), max_digits=3, decimal_places=2, validators=[MinValueValidator(0.0), MaxValueValidator(2.5)])
     peso = models.DecimalField(_('Peso em kg *'), max_digits=5, decimal_places=2, validators=[MinValueValidator(0.0), MaxValueValidator(400.0)])
     
@@ -43,11 +42,11 @@ class Triagem(models.Model):
     class Meta:
         ordering            =   ['-data', '-hora', 'paciente2__nome']
         verbose_name        =   ('triagem')
-        verbose_name_plural =   ('triagenss')
+        verbose_name_plural =   ('triagens')
         unique_together     =   [['data','hora','paciente2']]
 
     def __str__(self):
-        return "Paciente: %s. Resultado: %s." % (self.paciente2, self.resultado_literal_triagem)
+        return "Paciente: %s. Resultado: %s. Data: %s. Hora: %s" % (self.paciente2, self.resultado_literal_triagem, self.data, self.hora)
 
     def save(self, *args, **kwargs):
         self.data = datetime.now()
@@ -68,10 +67,6 @@ class Triagem(models.Model):
     @property
     def imc(self):
         return self.peso/(self.altura * self.altura)
-    
-    @property
-    def idade(self):
-        return  datetime.now().year - self.data_nascimento.year
     
     @property
     def resultado_numerico_triagem(self):

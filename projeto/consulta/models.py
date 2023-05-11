@@ -16,8 +16,10 @@ class Consulta(models.Model):
 
     data = models.DateField('Data da consulta ', max_length=10, help_text='Use dd/mm/aaaa')
     hora = models.TimeField('Hora da consulta ', max_length=10, help_text='Use hh:mm')
-    paciente = models.CharField('Informe o nome completo do paciente *', max_length=100, help_text= '* indica campos obrigatórios')
+    # paciente = models.CharField('Informe o nome completo do paciente *', max_length=100, help_text= '* indica campos obrigatórios')
     
+    paciente_triagem = models.ForeignKey('triagem.Triagem', blank=False, null=True, verbose_name= 'Paciente vindo da triagem *', on_delete=models.PROTECT, related_name='paciente_triagem')
+
     prescricao = models.TextField('Prescrição *', max_length=1000, help_text= '* indica campos obrigatórios')
     medicamentos = models.ManyToManyField('medicamento.Medicamento', verbose_name='Medicamento(s)', null=True, blank=True, related_name='medicamento', help_text='Para selecionar ou deselecionar um medicamento pressione CTRL + Botão Esquerdo do mouse ou Command + Botão Esquerdo do mouse')
     
@@ -26,10 +28,10 @@ class Consulta(models.Model):
     objects = models.Manager()
     
     class Meta:
-        ordering            =   ['-data', '-hora', 'paciente']
+        ordering            =   ['-data', '-hora', 'paciente_triagem__paciente2__nome']
         verbose_name        =   ('consulta')
         verbose_name_plural =   ('consultas')
-        unique_together     =   [['data','hora','paciente']]
+        unique_together     =   [['data','hora','paciente_triagem']]
 
     def __str__(self):
         return "Paciente: %s. Médico: %s. Data: %s. Hora: %s." % (self.paciente, self.medico, self.data, self.hora)

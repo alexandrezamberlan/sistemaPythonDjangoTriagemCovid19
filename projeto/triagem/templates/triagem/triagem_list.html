@@ -18,10 +18,10 @@
 			<th>Data</th>
 			<th>Hora</th>
 			<th>Paciente</th>
-			<th>Idade</th>
-			<th>IMC</th>
-			<th>Situação</th>
-			<th>Resultado</th>
+			<th class="text-center">Idade</th>
+			<th class="text-center">IMC</th>
+			<th class="text-center">Situação</th>
+			<th class="text-center">Resultado</th>
 			<th>Responsável triagem</th>
   			<th class="text-center">Editar</th>
   			<th class="text-center">Excluir</th>
@@ -35,10 +35,10 @@
 					<td>{{ triagem.hora }}</td>
 					
 					<td>{{ triagem.paciente2 }}</td>
-					<td>{{ triagem.idade }}</td>
-					<td>{{ triagem.imc|floatformat:2  }}</td>
-					<td>{{ triagem.resultado_literal_triagem }}</td>
-					<td>{{ triagem.resultado_numerico_triagem }}</td>					
+					<td class="text-center">{{ triagem.paciente2.idade }}</td>
+					<td class="text-center">{{ triagem.imc|floatformat:2  }}</td>
+					<td class="text-center">{{ triagem.resultado_literal_triagem }}</td>
+					<td class="text-center">{{ triagem.resultado_numerico_triagem }}</td>					
 					<td>{{ triagem.responsavel.get_primeiro_nome }}</td>					
 					<td class="text-center">
 						{% bootstrap_button content='' href=triagem.get_absolute_url button_type='link' icon='edit' button_class='btn btn-primary' size='sm' %}

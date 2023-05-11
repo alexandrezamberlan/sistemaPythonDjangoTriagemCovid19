@@ -13,7 +13,7 @@ class TriagemFormCreate(forms.ModelForm):
 
     class Meta:
         model = Triagem
-        fields = ['responsavel', 'unidade', 'paciente2', 'data_nascimento', 'altura', 'peso',
+        fields = ['responsavel', 'unidade', 'paciente2', 'altura', 'peso',
               'tem_febre', 'tem_dor_cabeca', 'tem_secrecao_espirros', 'tem_irritacao_garganta',
               'tem_tosse', 'tem_dificuldade_respiratoria', 'tem_dores_corpo', 'tem_diarreia',
               'viajou', 'contatou']
@@ -26,5 +26,5 @@ class TriagemFormUpdate(forms.ModelForm):
 
     class Meta:
         model = Triagem
-        fields = ['responsavel', 'unidade', 'data_nascimento', 'altura', 'peso']
+        fields = ['responsavel', 'unidade', 'altura', 'peso']
 
