@@ -17,6 +17,7 @@ class Consulta(models.Model):
     data = models.DateField('Data da consulta ', max_length=10, help_text='Use dd/mm/aaaa')
     hora = models.TimeField('Hora da consulta ', max_length=10, help_text='Use hh:mm')
     paciente = models.CharField('Informe o nome completo do paciente *', max_length=100, help_text= '* indica campos obrigatórios')
+    
     prescricao = models.TextField('Prescrição *', max_length=1000, help_text= '* indica campos obrigatórios')
     medicamentos = models.ManyToManyField('medicamento.Medicamento', verbose_name='Medicamento(s)', null=True, blank=True, related_name='medicamento', help_text='Para selecionar ou deselecionar um medicamento pressione CTRL + Botão Esquerdo do mouse ou Command + Botão Esquerdo do mouse')
     

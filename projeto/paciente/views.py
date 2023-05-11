@@ -20,7 +20,7 @@ class PacienteListView(LoginRequiredMixin, ListView):
 
 class PacienteCreateView(LoginRequiredMixin, EnfermeiroRequiredMixin, CreateView):
     model = Paciente
-    fields = ['nome', 'cpf', 'email', 'is_active']
+    fields = ['nome', 'sexo', 'data_nascimento', 'cpf', 'email', 'is_active']
     success_url = 'paciente_list'
     
     def get_success_url(self):
@@ -30,7 +30,7 @@ class PacienteCreateView(LoginRequiredMixin, EnfermeiroRequiredMixin, CreateView
 
 class PacienteUpdateView(LoginRequiredMixin, EnfermeiroRequiredMixin, UpdateView):
     model = Paciente
-    fields = ['nome', 'cpf', 'email', 'is_active']
+    fields = ['nome', 'sexo', 'data_nascimento', 'cpf', 'email', 'is_active']
     success_url = 'paciente_list'
     
     def get_success_url(self):

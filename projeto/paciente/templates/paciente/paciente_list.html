@@ -14,9 +14,9 @@
 	<table class="table table-hover">
   		<thead>
   			<th>Nome</th>
-			<th>CPF</th>
-			<th>Email</th>			
-			<th>Ativo</th>
+			<th class="text-center">Sexo</th>
+			<th class="text-center">Idade</th>		
+			<th class="text-center">Ativo</th>
   			<th class="text-center">Editar</th>
   			<th class="text-center">Excluir</th>
   		</thead>
@@ -25,9 +25,9 @@
   			{% for paciente in object_list %}
 				<tr>
 					<td>{{ paciente.nome }}</td>
-					<td>{{ paciente.cpf }}</td>
-					<td>{{ paciente.email }}</td>					
-					<td>
+					<td class="text-center">{{ paciente.sexo }}</td>
+					<td class="text-center">{{ paciente.idade }}</td>					
+					<td class="text-center">
 						{% if paciente.is_active %}
 							{% bootstrap_icon 'thumbs-up' size='sm' %}
 						{% else %}
