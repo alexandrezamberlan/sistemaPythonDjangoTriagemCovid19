@@ -46,7 +46,8 @@ INSTALLED_APPS = [
     'triagem',
     'medicamento',
     'consulta',
-    'paciente'
+    'paciente',
+    'fornecedor'
 ]
 
 MIDDLEWARE = [

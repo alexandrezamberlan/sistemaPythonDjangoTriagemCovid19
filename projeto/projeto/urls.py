@@ -13,6 +13,7 @@ urlpatterns = [
     url(r'medicamento/', include('medicamento.urls')),
     url(r'consulta/', include('consulta.urls')),
     url(r'paciente/', include('paciente.urls')),
+    url(r'fornecedor/', include('fornecedor.urls')),
    
     url(r'^accounts/', include('django.contrib.auth.urls')),
 ]
