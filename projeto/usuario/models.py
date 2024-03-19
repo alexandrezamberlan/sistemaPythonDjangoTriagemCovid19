@@ -46,11 +46,11 @@ class Usuario(AbstractBaseUser):
 
     USERNAME_FIELD = 'email'
 
-    tipo = models.CharField(_('Tipo do usuário *'), max_length=15, choices=TIPOS_USUARIOS, default='TÉCNICO', help_text='* Campos obrigatórios')
-    nome = models.CharField(_('Nome completo *'), max_length=100)
-    email = models.EmailField(_('Email'), unique=True, max_length=100, db_index=True)
+    tipo = models.CharField('Tipo do usuário *', max_length=15, choices=TIPOS_USUARIOS, default='TÉCNICO', help_text='* Campos obrigatórios')
+    nome = models.CharField('Nome completo *', max_length=100)
+    email = models.EmailField('Email', unique=True, max_length=100, db_index=True)
     
-    is_active = models.BooleanField(_('Ativo'), default=False, help_text='Se ativo, o usuário tem permissão para acessar o sistema')
+    is_active = models.BooleanField('Ativo', default=False, help_text='Se ativo, o usuário tem permissão para acessar o sistema')
     slug = models.SlugField('Hash',max_length= 200,null=True,blank=True)
 
     objects = UserManager()

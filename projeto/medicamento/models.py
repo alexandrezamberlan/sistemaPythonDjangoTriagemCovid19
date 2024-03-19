@@ -32,6 +32,8 @@ class Medicamento(models.Model):
     tarja = models.CharField('Tarja do medicamento *', max_length=10, choices=TIPOS_TARJAS, help_text='* Campo obrigatório')
     tipo = models.CharField('Tipo do medicamento *', max_length=10, choices=TIPOS_MEDICAMENTOS, help_text='* Campo obrigatório')
     quantidade = models.CharField('Quantidade do medicamento *', max_length=20, help_text='Informe a quantidade e a unidade. Por exemplo, 75 mg ou 10 ml ou 15 comprimidos.')
+    fornecedor = models.ForeignKey('fornecedor.Fornecedor', verbose_name= 'Fabricante do medicamento', null = True, blank= False, on_delete=models.PROTECT, related_name='fornecedor')
+
     is_active = models.BooleanField(_('Ativo'), default=True, help_text='Se ativo, o curso pode ser usado no sistema')
     slug = models.SlugField('Hash',max_length= 200,null=True,blank=True)
 
