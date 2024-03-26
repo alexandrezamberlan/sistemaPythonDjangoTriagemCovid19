@@ -37,7 +37,7 @@ class Consulta(models.Model):
         return "Paciente: %s. Médico: %s. Data: %s. Hora: %s." % (self.paciente, self.medico, self.data, self.hora)
 
     def save(self, *args, **kwargs):
-        self.paciente = self.paciente.upper()
+        
         
         self.data = datetime.now()
         self.hora = datetime.now()

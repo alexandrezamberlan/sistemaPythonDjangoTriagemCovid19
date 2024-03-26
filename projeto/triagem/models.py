@@ -54,6 +54,9 @@ class Triagem(models.Model):
         
         if not self.slug:
             self.slug = gerar_hash()
+
+        
+
         super(Triagem, self).save(*args, **kwargs)
 
     @property

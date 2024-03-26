@@ -13,9 +13,43 @@ from utils.decorators import LoginRequiredMixin, StaffRequiredMixin, EnfermeiroR
 
 from .models import Medicamento
 
+from .forms import BuscaMedicamentoForm
+
 
 class MedicamentoListView(LoginRequiredMixin, ListView):
     model = Medicamento
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        if self.request.GET:
+            #quando ja tem dados filtrando
+            context['form'] = BuscaMedicamentoForm(data=self.request.GET)
+        else:
+            #quando acessa sem dados filtrando
+            context['form'] = BuscaMedicamentoForm()
+        return context
+
+    def get_queryset(self):                
+        qs = super().get_queryset().all()
+        
+        if self.request.GET:
+            #quando ja tem dados filtrando
+            form = BuscaMedicamentoForm(data=self.request.GET)
+        else:
+            #quando acessa sem dados filtrando
+            form = BuscaMedicamentoForm()
+
+        if form.is_valid():            
+            tarja = form.cleaned_data.get('tarja')
+            tipo = form.cleaned_data.get('tipo')
+                        
+            if tarja:
+                qs = qs.filter(tarja=tarja)
+
+            if tipo:
+                qs = qs.filter(tipo=tipo)
+            
+        return qs
  
 
 class MedicamentoCreateView(LoginRequiredMixin, EnfermeiroRequiredMixin, CreateView):
